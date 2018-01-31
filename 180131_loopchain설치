@@ -1,0 +1,31 @@
+loopchain core 설치
+
+오류내용
+install_loopchain.sh: line 17: virtualenv: command not found
+install_loopchain.sh: line 18: bin/activate: No such file or directory
+
+virtualenv -p python3
+source bin/activate
+
+virtualenv 설치
+https://beomi.github.io/2016/12/28/HowToSetup-Virtualenv-VirtualenvWrapper/
+python3 -m pip install virtualenv virtualenvwrapper
+
+bin/activate 폴더 생성 
+grpc 설치 (grpc-tools)
+https://grpc.io/docs/quickstart/python.html
+python -m pip install grpcio
+python -m pip install grpcio-tools
+
+cd bin
+
+가상환경 생성하기
+conda create -n activate
+conda create -n [가상환경이름]
+
+가상환경 실행하기
+source activate activate
+source activate [가상환경이름]
+
+
+
