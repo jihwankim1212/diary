@@ -1,6 +1,5 @@
 loopchain core 설치
 
-오류내용
 install_loopchain.sh: line 17: virtualenv: command not found
 install_loopchain.sh: line 18: bin/activate: No such file or directory
 
@@ -26,6 +25,29 @@ conda create -n [가상환경이름]
 가상환경 실행하기
 source activate activate
 source activate [가상환경이름]
+
+가상환경 나오기
+source deactivate
+
+Run in Terminal app
+ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" < /dev/null 2> /dev/null
+
+설치
+brew install curl
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
