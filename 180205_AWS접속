@@ -1,0 +1,17 @@
+######################## AWS 접속 ########################
+
+ucoin-loopchain.pem
+
+경로 설정
+Desktop/key/ucoin-loopchain.pem
+
+권한 주기
+chmod 400 ~/Desktop/key/ucoin-loopchain.pem
+
+권한 확인하기
+ls -l
+ls -l ucoin-loopchain.pem
+
+ssh로 접속하기 (loopchain 우분투@3번 ip)
+ssh -i ~/Desktop/key/ucoin-loopchain.pem ubuntu@13.125.125.46
+
