@@ -10,5 +10,13 @@ maven 설치
 2. help - eclipse marketplace
 3. maven 검색 (버전이 맞는것으로 설치)
 
+lombok 설치
+https://uncle-bae.blogspot.kr/2015/12/lombok-mac-eclipse.html
+
+1. jar 다운받기
+2. jar 실행 후 install/update
+3. pom.xml에서 버전 설정 바꾸기
+4. eclipse 재실행
+
 
 
