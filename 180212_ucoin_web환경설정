@@ -22,6 +22,8 @@ https://uncle-bae.blogspot.kr/2015/12/lombok-mac-eclipse.html
 3. pom.xml에서 버전 설정 바꾸기
 4. eclipse 재실행
 
+RUN VM 추가
+-Dspring.profiles.active=suresign_demo
 
 javax/xml/bind/ValidationException 에러내용
 pom.xml에 추가
