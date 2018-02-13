@@ -1,14 +1,18 @@
 메인주소
 https://bitbucket.org/suresign/ucoin-server/overview
 
+
 소스트리 설치
 
+
 이클립스 설치
+
 
 maven 설치
 1. 이클립스 접속
 2. help - eclipse marketplace
 3. maven 검색 (버전이 맞는것으로 설치)
+
 
 lombok 설치
 https://uncle-bae.blogspot.kr/2015/12/lombok-mac-eclipse.html
@@ -19,4 +23,13 @@ https://uncle-bae.blogspot.kr/2015/12/lombok-mac-eclipse.html
 4. eclipse 재실행
 
 
+javax/xml/bind/ValidationException 에러내용
+pom.xml에 추가
+
+<!-- https://mvnrepository.com/artifact/javax.xml.bind/jaxb-api -->
+<dependency>
+    <groupId>javax.xml.bind</groupId>
+    <artifactId>jaxb-api</artifactId>
+    <version>2.2.8</version>
+</dependency>
 
