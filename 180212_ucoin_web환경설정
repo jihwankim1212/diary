@@ -35,3 +35,13 @@ pom.xml에 추가
     <version>2.2.8</version>
 </dependency>
 
+
+
+
+권한주기
+chomd -R 777 경로
+
+권한확인
+ls -la
+
+
