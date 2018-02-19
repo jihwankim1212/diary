@@ -45,3 +45,9 @@ chomd -R 777 경로
 ls -la
 
 
+
+#manager // 관리자 페이지 아이디 패스워드 
+admin.default.user.id       =   admin 
+admin.default.user.password =   password1!
+
+
