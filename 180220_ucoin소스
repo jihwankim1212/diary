@@ -1,0 +1,22 @@
+
+
+
+1. DB 접근
+- src>main>resources>core>mappers>ucoin>admin>DealHistoryMapper.xml
+
+
+2. 컨트롤러 Controller
+- src>main>java>com>nomad>ucoin>web>controller>admin>DealHistoryController.java
+
+
+3. mapper 실행 DealHistoryServiceImpl.java
+- src>main>java>com>nomad>ucoin>core>service>impl>admin>DealHisotryServiceImpl.java
+
+
+4. loopchain 접근
+- src>main>webapp>WEB_INF>jsp>admin>addressManagement.jsp
+- src>mian>resources>static>js>ucoin>addressManagement.js
+- src>main>java>com>nomad>ucoin>core>service>impl>AddressServiceImpl.java
+    - loopchain api 접근
+
+
