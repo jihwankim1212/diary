@@ -51,3 +51,9 @@ admin.default.user.id       =   admin
 admin.default.user.password =   password1!
 
 
+terminal에서 실행
+경로 /Users/jihwan/.m2/repository/com/nomad/ucoin/admin/0.0.1-SNAPSHOT
+java -jar -Dspring.profiles.active=suresign_demo ./admin-0.0.1-SNAPSHOT.jar
+
+
+
