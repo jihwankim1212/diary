@@ -1,6 +1,5 @@
 
 
-
 1. DB 접근
 - src>main>resources>core>mappers>ucoin>admin>DealHistoryMapper.xml
 
@@ -18,5 +17,7 @@
 - src>mian>resources>static>js>ucoin>addressManagement.js
 - src>main>java>com>nomad>ucoin>core>service>impl>AddressServiceImpl.java
     - loopchain api 접근
+
+
 
 
