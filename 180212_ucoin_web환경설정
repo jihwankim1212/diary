@@ -39,7 +39,7 @@ pom.xml에 추가
 
 
 권한주기
-chomd -R 777 경로
+chmod -R 777 경로
 
 권한확인
 ls -la
