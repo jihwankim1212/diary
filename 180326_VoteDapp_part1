@@ -1,0 +1,138 @@
+hello_vote dapp 1
+
+https://medium.com/@mvmurthy/full-stack-hello-world-voting-ethereum-dapp-tutorial-part-1-40d2d0d807c2
+
+node 설치
+$ brew install node
+
+version 확인
+$ node -v
+$ npm -v
+
+project folder 생성
+$ mkdir hello_world_voting
+
+$ mkdir node_modules
+
+$ npm install ganache-cli web3
+
+package.json 생성
+$ npm init -y 
+
+web 대기 상태
+$ node_modules/.bin/ganache-cli
+
+$ npm install solc
+
+node 접속
+$ node 
+
+web3 초기화
+> Web3 = require('web3')
+> web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8545"));
+
+> code = fs.readFileSync('Voting.sol').toString()
+> solc = require('solc')
+> compiledCode = solc.compile(code)
+
+계약서에서 사용할 수있는 메소드를 계약 사용자에게 알려주는 계약의 인터페이스 또는 템플릿 (abi라고 함)
+> abiDefinition = JSON.parse(compiledCode.contracts[':Voting'].interface)
+> VotingContract = web3.eth.contract(abiDefinition)
+
+소스 코드가 컴파일 될 때 얻을 수있는 바이트 코드. 블록 체인에 배포
+> byteCode = compiledCode.contracts[':Voting'].bytecode
+> deployedContract = VotingContract.new(['Rama','Nick','Jose'],{data: byteCode, from: web3.eth.accounts[0], gas: 4700000})
+> deployedContract.address
+> contractInstance = VotingContract.at(deployedContract.address)
+
+
+> contractInstance.totalVotesFor.call('Rama')
+
+Rama에 vote
+> contractInstance.voteForCandidate('Rama', {from: web3.eth.accounts[0]})
+
+Rama vote count
+> contractInstance.totalVotesFor.call('Rama').toLocaleString()
+
+
+Index.html
+===========================================================
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Hello World DApp</title>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+  <link href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' rel='stylesheet' type='text/css'>
+</head>
+<body class="container">
+  <h1>A Simple Hello World Voting Application</h1>
+  <div class="table-responsive">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Candidate</th>
+          <th>Votes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Rama</td>
+          <td id="candidate-1"></td>
+        </tr>
+        <tr>
+          <td>Nick</td>
+          <td id="candidate-2"></td>
+        </tr>
+        <tr>
+          <td>Jose</td>
+          <td id="candidate-3"></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <input type="text" id="candidate" />
+  <a href="#" onclick="voteForCandidate()" class="btn btn-primary">Vote</a>
+</body>
+<script src="https://cdn.rawgit.com/ethereum/web3.js/develop/dist/web3.js"></script>
+<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"></script>
+<script src="./index.js"></script>
+</html>
+
+===========================================================
+
+Index.js
+
+===========================================================
+
+web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8545"));
+abi = JSON.parse('[{"constant":false,"inputs":[{"name":"candidate","type":"bytes32"}],"name":"totalVotesFor","outputs":[{"name":"","type":"uint8"}],"payable":false,"type":"function"},{"constant":false,"inputs":[{"name":"candidate","type":"bytes32"}],"name":"validCandidate","outputs":[{"name":"","type":"bool"}],"payable":false,"type":"function"},{"constant":true,"inputs":[{"name":"","type":"bytes32"}],"name":"votesReceived","outputs":[{"name":"","type":"uint8"}],"payable":false,"type":"function"},{"constant":true,"inputs":[{"name":"x","type":"bytes32"}],"name":"bytes32ToString","outputs":[{"name":"","type":"string"}],"payable":false,"type":"function"},{"constant":true,"inputs":[{"name":"","type":"uint256"}],"name":"candidateList","outputs":[{"name":"","type":"bytes32"}],"payable":false,"type":"function"},{"constant":false,"inputs":[{"name":"candidate","type":"bytes32"}],"name":"voteForCandidate","outputs":[],"payable":false,"type":"function"},{"constant":true,"inputs":[],"name":"contractOwner","outputs":[{"name":"","type":"address"}],"payable":false,"type":"function"},{"inputs":[{"name":"candidateNames","type":"bytes32[]"}],"payable":false,"type":"constructor"}]')
+VotingContract = web3.eth.contract(abi);
+// In your nodejs console, execute contractInstance.address to get the address at which the contract is deployed and change the line below to use your deployed address
+contractInstance = VotingContract.at('0x2a9c1d265d06d47e8f7b00ffa987c9185aecf672');     <—  deployedContract.address
+candidates = {"Rama": "candidate-1", "Nick": "candidate-2", "Jose": "candidate-3"}
+
+function voteForCandidate() {
+  candidateName = $("#candidate").val();
+  contractInstance.voteForCandidate(candidateName, {from: web3.eth.accounts[0]}, function() {
+    let div_id = candidates[candidateName];
+    $("#" + div_id).html(contractInstance.totalVotesFor.call(candidateName).toString());
+  });
+}
+
+$(document).ready(function() {
+  candidateNames = Object.keys(candidates);
+  for (var i = 0; i < candidateNames.length; i++) {
+    let name = candidateNames[i];
+    let val = contractInstance.totalVotesFor.call(name).toString()
+    $("#" + candidates[name]).html(val);
+  }
+});
+
+===========================================================
+
+
+
+
+
+
