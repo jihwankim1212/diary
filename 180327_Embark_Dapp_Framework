@@ -1,0 +1,15 @@
+embark
+
+ethereum dapp framework
+
+embark 설치
+$ npm -g install embark
+
+testrpc 환경 설정
+$ npm -g install ethereumjs-testrpc
+
+run a fast ethereum rpc simulator
+$ embark simulator
+
+run dapp
+$ embark run
